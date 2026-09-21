@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SABONG GLOBAL AUTO JOIN</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"peerjs":"https://cdn.jsdelivr.net/npm/peerjs@1.5.2/+esm"}}</script>
+</head>
+<body>
+<div id="app">
+<header><h1>🔥 SABONG GLOBAL AUTO 🔥</h1><div id="res"><div>PESO: <span id="pesos">0</span></div><div>PATUKA: <span id="feeds">0</span></div><div id="peerCount">⏳ AUTO JOIN...</div></div></header>
+<nav>
+<button class="active" onclick="showPage('farm')">🐓 FARM</button>
+<button onclick="showPage('breed')">🥚 BREED</button>
+<button onclick="showPage('pit')">⚔️ PIT NPC</button>
+<button onclick="showPage('market')">🏪 MARKET ALL</button>
+<button onclick="showPage('auction')">🌐 GLOBAL AUTO + CHAT</button>
+</nav>
+<div id="farm" class="page active"><div id="farmGrid" class="grid"></div></div>
+<div id="breed" class="page"><div style="display:flex;gap:8px;flex-wrap:wrap;background:#000a;padding:10px;border-radius:12px;margin-bottom:10px"><select id="maleSel"></select><select id="femaleSel"></select><button onclick="breedNow()">BREED P30</button><div id="incubator"></div></div><div id="breedGrid" class="grid"></div></div>
+<div id="pit" class="page"><div style="display:grid;grid-template-columns:1fr 330px;gap:12px"><div><div style="display:flex;justify-content:space-between"><span id="fightLabel">🐓 PILI MANOK SA FARM MUNA - PINDUTIN PILI PIT</span><span id="timer">0</span></div><canvas id="pitCanvas" width="800" height="380"></canvas><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><input id="betAmount" type="number" value="500" style="width:90px"><button onclick="startDerby()" style="background:#ffb400;padding:10px;border:none;border-radius:8px;font-family:'Black Ops One'">⚔️ LABAN NPC!</button></div><div id="log"></div><div id="challengeBox" style="display:none;background:linear-gradient(90deg,#1a2a1a,#0f1f0f);border:3px solid #00ff88;padding:14px;border-radius:14px;margin-top:12px;box-shadow:0 0 20px #00ff8833"><div id="challengeText" style="font-size:13px;line-height:1.4"></div><div style="display:flex;gap:8px;margin-top:10px"><button onclick="acceptChallenge()" style="background:#00ff88;color:#000;border:none;padding:10px 18px;border-radius:10px;font-family:'Black Ops One'">✅ ACCEPT LABAN!</button><button onclick="declineChallenge()" style="background:#ff4444;color:#fff;border:none;padding:10px 18px;border-radius:10px;font-family:'Black Ops One'">❌ DECLINE</button></div><div style="font-size:9px;color:#888;margin-top:6px">👉 Siguraduhin may napili kang manok sa FARM na may ✅ PILI PIT</div></div></div><div><div style="font-family:'Black Ops One';color:#ff4444;font-size:11px;margin-bottom:8px">👨‍🌾 NPC - NAME LANG - PINDUTIN PARA KALABAN</div><div id="npcList"></div></div></div></div>
+<div id="market" class="page"><div style="font-family:'Black Ops One';color:#ffb400;margin-bottom:10px">🏪 ALL BREEDS SHOP - LAHAT P1K+ MALALAKAS 🔥</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div id="fullChickenShop"></div><div><div style="font-family:'Black Ops One';margin-bottom:8px">💰 BENTA AGAD 70%</div><div id="quickSellList"></div></div></div></div>
+<div id="auction" class="page">
+<div id="onlinePanel" style="background:linear-gradient(90deg,#0a0f0a,#1a2210);padding:14px;border-radius:14px;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;border:2px solid #333">
+<div id="myRoomId" style="width:100%;color:#00ff88;font-size:12px">⏳ AUTO CONNECTING GLOBAL... Wag na pindutin CREATE, auto na yan boss!</div>
+<div style="display:flex;gap:8px;width:100%;flex-wrap:wrap">
+<button onclick="autoJoinGlobal()" style="background:linear-gradient(180deg,#00ff88,#00aa66);color:#000;padding:12px 20px;border:none;border-radius:12px;font-family:'Black Ops One';box-shadow:0 4px 0 #006644">🌐 JOIN GLOBAL AUTO - CLICK KUNG DI PA CONNECTED</button>
+<button onclick="saveGame()" style="background:#333;color:#fff;padding:10px;border:none;border-radius:10px">💾 SAVE</button>
+<div style="display:flex;gap:6px;align-items:center;background:#000a;padding:6px 10px;border-radius:10px;border:1px solid #333">
+<span style="font-size:10px">👤 NAME:</span><input id="playerName" value="Player" style="width:120px"><button onclick="updateName()" style="background:#ffb400;color:#000;padding:6px 10px;border:none;border-radius:8px;font-family:'Black Ops One'">SET</button>
+</div>
+</div>
+<div style="width:100%;font-size:10px;color:#888;margin-top:4px">✅ Pag click JOIN, auto makikita mo lahat ng online players sa baba - no need Room ID!</div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:12px">
+<div>
+<div style="display:flex;gap:8px;margin-bottom:10px"><select id="sellSel"></select><input id="sellPrice" type="number" value="1500" style="width:100px"><button onclick="listForSale()">LIST P1000+</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div id="myAuction"></div><div id="liveAuction"></div></div>
+<div style="margin-top:14px;background:#111;border:2px solid #333;border-radius:14px;padding:12px">
+<div style="font-family:'Black Ops One';font-size:12px;margin-bottom:8px;color:#00ff88">💬 GLOBAL CHAT - KITA NG LAHAT</div>
+<div id="chatBox" style="height:160px;overflow:auto;background:#000a;border:1px solid #222;padding:10px;border-radius:10px;font-size:11px"></div>
+<div style="display:flex;gap:6px;margin-top:8px"><input id="chatInput" placeholder="💬 Type message... kita ng lahat!" style="flex:1"><button onclick="sendChat()" style="background:#00ff88;color:#000;padding:8px 14px;border:none;border-radius:8px;font-family:'Black Ops One'">SEND 📤</button></div>
+</div>
+</div>
+<div>
+<div style="background:linear-gradient(180deg,#111a11,#0a0f0a);border:2px solid #ffb400;border-radius:14px;padding:12px">
+<h4 style="font-family:'Black Ops One';font-size:11px;color:#ffb400">🌐 GLOBAL ONLINE PLAYERS - AUTO JOIN</h4>
+<div style="font-size:9px;color:#888;margin-bottom:10px">👉 STEP: FARM > PILI PIT > BALIK DITO > HAMUNIN<br>Auto kita pag nag JOIN GLOBAL</div>
+<div id="globalPlayers"></div>
+<div style="margin-top:12px;border-top:1px solid #333;padding-top:8px"><div style="font-family:'Black Ops One';font-size:10px;color:#00ff88">🏆 LEADERBOARD - FIXED NO DOUBLE</div><div id="leaderboardList" style="margin-top:6px"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="module" src="script.js"></script>
+</body>
+</html>

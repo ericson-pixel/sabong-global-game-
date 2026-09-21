@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Russo+One&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(circle at top,#1a2a1a,#050805);color:#fff;font-family:'Russo One';display:flex;justify-content:center;padding:8px;min-height:100vh}
+#app{width:1240px;max-width:100%;background:linear-gradient(180deg,#131e13,#0a0f0a);border:3px solid #ffb400;border-radius:20px;overflow:hidden;box-shadow:0 0 35px #ffb40055, inset 0 0 20px #000}
+header{display:flex;justify-content:space-between;padding:16px 18px;background:linear-gradient(90deg,#1e331e,#0e1a0e);border-bottom:3px solid #ffb400;flex-wrap:wrap;align-items:center}
+header h1{font-family:'Black Ops One';color:#ffb400;font-size:22px;text-shadow:0 0 12px #ffb400, 0 0 20px #ff8800;letter-spacing:1px}
+#res{display:flex;gap:14px;font-size:13px;background:#000a;padding:8px 12px;border-radius:12px;border:1px solid #333}#res span{color:#00ff88;text-shadow:0 0 8px #00ff88}
+nav{display:flex;gap:7px;padding:12px;background:#080c08;overflow:auto;border-bottom:1px solid #222}
+nav button{white-space:nowrap;padding:11px 15px;border:2px solid #333;border-radius:14px;background:linear-gradient(180deg,#1e2a1e,#121a12);color:#888;cursor:pointer;font-family:'Black Ops One';font-size:10px;transition:0.2s;box-shadow:0 3px 0 #000}
+nav button:hover{border-color:#ffb400;color:#ffb400;transform:translateY(-1px)}nav button.active{background:linear-gradient(180deg,#ffb400,#ff8800);color:#000;border-color:#ffb400;box-shadow:0 0 15px #ffb400,0 4px 0 #aa5a00}
+.page{display:none;padding:16px;min-height:650px}.page.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,#1f2f1f 0%,#121a12 100%);border:2px solid #2e4a2e;border-radius:16px;padding:14px;position:relative;transition:0.2s;box-shadow:0 6px 18px #000a}
+.card:hover{border-color:#ffb400;transform:translateY(-3px) scale(1.01);box-shadow:0 10px 25px #000,0 0 20px #ffb40033}
+.card.mature{border-color:#00ff88;box-shadow:0 0 18px #00ff8844}
+.badge{position:absolute;top:10px;right:10px;font-size:8px;padding:4px 8px;border-radius:20px;background:linear-gradient(90deg,#000,#1a1a1a);color:#ffb400;border:1px solid #444;box-shadow:0 0 8px #000}
+.statRow{display:flex;gap:6px;margin:8px 0}.s{flex:1;background:linear-gradient(180deg,#000a,#111);padding:5px;border-radius:10px;text-align:center;font-size:9px;border:1px solid #222}.s b{display:block;color:#ffb400;font-size:15px;text-shadow:0 0 6px #ffb40066}
+.btns{display:flex;gap:6px;margin-top:10px}.btns button{flex:1;padding:8px;border:none;border-radius:10px;cursor:pointer;font-size:10px;font-family:'Russo One';box-shadow:0 3px 0 #000a;transition:0.1s}.btns button:active{transform:translateY(3px);box-shadow:none}
+.feed{background:linear-gradient(180deg,#3a7a2a,#2e5a22);color:#fff}.train{background:linear-gradient(180deg,#7a3a2a,#5a2e22);color:#fff}.pick{background:linear-gradient(180deg,#ffe400,#ffb400);color:#000;font-family:'Black Ops One'!important;box-shadow:0 3px 0 #aa5a00!important}
+#pitCanvas{width:100%;height:400px;background:radial-gradient(circle at center,#2e4a2e 0%,#101610 70%);border:3px solid #ffb400;border-radius:16px;box-shadow:inset 0 0 40px #000,0 0 15px #ffb40033}
+#log{height:100px;overflow:auto;background:linear-gradient(180deg,#000c,#0008);border:1px solid #333;padding:10px;font-size:11px;border-radius:12px;margin-top:10px;box-shadow:inset 0 0 10px #000}
+.marketItem{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#1c2a1c,#121812);border:2px solid #2a3a2a;padding:14px;border-radius:14px;margin-bottom:10px;transition:0.2s}
+.marketItem:hover{border-color:#444;transform:translateX(3px)}.marketItem.shop{background:linear-gradient(90deg,#1a1a2a,#1a221a);border-color:#3a3a4a}.marketItem.shop.strong{border-color:#ffb400;box-shadow:0 0 15px #ffb40033, inset 0 0 10px #ffb40011;background:linear-gradient(90deg,#2a2210,#1a1a0a)}
+.marketItem button{background:linear-gradient(180deg,#ffb400,#ff8800);border:none;padding:9px 14px;border-radius:10px;font-family:'Black Ops One';cursor:pointer;color:#000;box-shadow:0 3px 0 #aa5a00;transition:0.1s}.marketItem button:active{transform:translateY(3px);box-shadow:none}
+.npcCard{background:linear-gradient(180deg,#2e1e1e,#151010);border:2px solid #4a2e2e;border-radius:16px;padding:16px;cursor:pointer;text-align:center;margin-bottom:10px;transition:0.2s;position:relative;overflow:hidden}
+.npcCard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ff3333,#ffb400);opacity:0;transition:0.2s}.npcCard:hover{border-color:#ffb400;transform:scale(1.03) rotate(-0.5deg);box-shadow:0 8px 20px #000}.npcCard:hover::before{opacity:1}.npcCard.selected{border-color:#00ff88;box-shadow:0 0 20px #00ff88aa;background:linear-gradient(180deg,#1e2e1e,#101a10)}
+.auctionCard{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#1a1f1a,#121612);border:2px solid #333;padding:12px;border-radius:12px;margin-bottom:8px;transition:0.2s}.auctionCard:hover{border-color:#555}.auctionCard.live{border-color:#00ff88;box-shadow:0 0 12px #00ff8833}
+.globalPlayer{background:linear-gradient(90deg,#1c2a1c,#121a12);border:2px solid #333;border-radius:14px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;transition:0.2s;box-shadow:0 4px 12px #000a}
+.globalPlayer:hover{border-color:#555;transform:translateX(4px)}.globalPlayer.me{border-color:#ffb400;background:linear-gradient(90deg,#2a2210,#1a1a0a);box-shadow:0 0 15px #ffb40033}
+.globalPlayer .btns-challenge{display:flex;gap:6px;flex-wrap:wrap}.globalPlayer button{padding:8px 10px;border:none;border-radius:8px;font-family:'Black Ops One';font-size:9px;cursor:pointer;box-shadow:0 3px 0 #000a;transition:0.1s}.globalPlayer button:active{transform:translateY(3px);box-shadow:none}
+.btn-sabong{background:linear-gradient(180deg,#ff5555,#cc2222);color:#fff}.btn-pulis{background:linear-gradient(180deg,#5555ff,#3333aa);color:#fff}.btn-chat{background:#333;color:#fff}
+#chatBox div{margin-bottom:6px;padding:6px 10px;background:linear-gradient(90deg,#111a11,#0a0f0a);border-radius:10px;border-left:3px solid #333;animation:slideIn 0.2s}
+#chatBox div.me{border-left-color:#ffb400;background:linear-gradient(90deg,#2a2210,#1a1a0a)}#chatBox b{color:#ffb400;text-shadow:0 0 6px #ffb40066}
+@keyframes slideIn{from{transform:translateX(-10px);opacity:0}to{transform:translateX(0);opacity:1}}
+select,input{background:linear-gradient(180deg,#111,#000);color:#fff;border:2px solid #444;border-radius:10px;padding:10px;font-family:'Russo One';transition:0.2s}select:focus,input:focus{border-color:#ffb400;box-shadow:0 0 10px #ffb40033;outline:none}
